@@ -1,11 +1,11 @@
 CAMERA:
-  HEIGHT: "2048"
+  HEIGHT: '2048'
   TYPE: RGB
-  WIDTH: "2448"
+  WIDTH: '2448'
 LABELS:
   label1: det
 ROI:
-  height: "1095.68"
-  width: "1370.88"
-  x: "428.4"
-  y: "757.76"
+  height: '1095.68'
+  width: '1370.88'
+  x: '428.4'
+  y: '757.76'

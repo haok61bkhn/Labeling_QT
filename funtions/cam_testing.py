@@ -42,7 +42,8 @@ class CameraTestingThread(QThread):
         self.capture = True
         text = self.sender().text()
         image_file = os.path.join(self.data_dir, text, text+"_"+str(time.time()) + ".jpg")
-        time.sleep(0.1)
+        while self.capture == True:
+            time.sleep(0.01)
         image = self.image.copy()
         x1=int(float(self.x))
         y1=int(float(self.y))
@@ -237,15 +238,16 @@ class CameraTestingThread(QThread):
                 self.ui.bn_label1.setText(label1)
                 if os.path.exists(os.path.join(self.data_dir, label1)) == False:
                     os.makedirs(os.path.join(self.data_dir, label1))
-            else:
+            elif "label1" in self.ui.config["LABELS"]:
                     del self.ui.config["LABELS"]["label1"]
+                    
             if label2 != "":
                 self.ui.config["LABELS"]["label2"] = label2
                 self.ui.bn_label2.show()
                 self.ui.bn_label2.setText(label2)
                 if os.path.exists(os.path.join(self.data_dir, label2)) == False:
                     os.makedirs(os.path.join(self.data_dir, label2))
-            else:
+            elif "label2" in self.ui.config["LABELS"]:
                     del self.ui.config["LABELS"]["label2"]
             if label3 != "":
                 self.ui.config["LABELS"]["label3"] = label3
@@ -253,7 +255,7 @@ class CameraTestingThread(QThread):
                 self.ui.bn_label3.setText(label3)
                 if os.path.exists(os.path.join(self.data_dir, label3)) == False:
                     os.makedirs(os.path.join(self.data_dir, label3))
-            else:
+            elif "label3" in self.ui.config["LABELS"]:
                     del self.ui.config["LABELS"]["label3"]
             save_config(self.ui.config)
             self.ui.message("Thành công", "Lưu cấu hình thành công")
