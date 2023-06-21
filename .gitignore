@@ -1,0 +1,8 @@
+*.spec
+*.so
+*.exe
+*.o
+build
+dist
+*.pyc
+app
